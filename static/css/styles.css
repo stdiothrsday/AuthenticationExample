@@ -16,3 +16,7 @@ form > .alert > ul > li{
     text-align: center;
 }
 
+#make
+{
+   display:none;
+}
