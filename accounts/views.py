@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from .forms import ContactForm, IntroForm, AboutForm
+from .models import Contact, About, Intro
 from .forms import UserRegistrationForm
 # from django.contrib import messages
 
@@ -60,3 +62,36 @@ def logout_view(request):
     logout(request)
     # redirect the user to index page
     return redirect('index')
+
+
+def create_profile(request):
+    if request.method == 'POST':
+        form1 = ContactForm(request.POST)
+        form2 = IntroForm(request.POST)
+        form3 = AboutForm(request.POST)
+        if form1.is_valid() and form2.is_valid() and form3.is_valid():
+            form1.save()
+            form2.save()
+            form3.save()
+            return redirect('profile')
+        else:
+            form1 = ContactForm()
+            form2 = IntroForm()
+            form3 = AboutForm()
+            context = {'form1': form1, 'form2': form2, 'form3': form3}
+            return render(request, 'accounts/create_profile.html', context)
+    else:
+
+        form1 = ContactForm()
+        form2 = IntroForm()
+        form3 = AboutForm()
+        context = {'form1': form1, 'form2': form2, 'form3': form3}
+        return render(request, 'accounts/create_profile.html', context)
+
+
+def view_profile(request):
+    info1 = Contact.objects.all()
+    info2 = About.objects.all()
+    info3 = Intro.objects.all()
+    context = {'info1': info1, 'info2': info2, 'info3': info3}
+    return render(request, 'accounts/view_profile.html', context)

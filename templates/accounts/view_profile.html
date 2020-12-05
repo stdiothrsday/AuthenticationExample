@@ -1,0 +1,24 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    View profile
+{% endblock %}
+
+{% block body %}
+    <div class="jumbotron bg-white">
+        <h2 class="text-center">View Profile</h2>
+        <div>
+            {% for contact in info1 %}
+            <li>{{ contact }}</li>
+            {% endfor %}
+                {% for about in info2 %}
+            <li>{{ about }}</li>
+            {% endfor %}
+                {% for intro in info3 %}
+            <li>{{ intro }}</li>
+            {% endfor %}
+
+        </div>
+    </div>
+
+{% endblock %}
