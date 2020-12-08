@@ -11,7 +11,6 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
@@ -23,7 +22,6 @@ class ContactForm(forms.ModelForm):
 
         }
 
-
 class IntroForm(forms.ModelForm):
     class Meta:
         model = Intro
@@ -31,11 +29,9 @@ class IntroForm(forms.ModelForm):
 
         widgets = {
             'interests': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'List 3 to 5 interests'}),
-            'bio_message': forms.Textarea(
-                attrs={'class': 'form-control', 'placeholder': 'Brief description about yourself'}),
+            'bio_message': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Brief description about yourself'}),
 
         }
-
 
 class AboutForm(forms.ModelForm):
     class Meta:
