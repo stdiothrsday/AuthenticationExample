@@ -12,6 +12,7 @@ class UserRegistrationForm(UserCreationForm):
         fields = ['username', 'email', 'password1', 'password2']
 
 class ContactForm(forms.ModelForm):
+    image = forms.ImageField(required=False)
     class Meta:
         model = Contact
         fields = '__all__'

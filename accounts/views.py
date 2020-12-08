@@ -74,21 +74,17 @@ def create_profile(request):
             form2.save()
             form3.save()
             return redirect('profile')
-        else:
-            form1 = ContactForm()
-            form2 = IntroForm()
-            form3 = AboutForm()
-            context = {'form1': form1, 'form2': form2, 'form3': form3}
-            return render(request, 'accounts/create_profile.html', context)
+            #context = {'form1': form1, 'form2': form2, 'form3': form3}
+            #return render(request, 'accounts/view_profile.html', context)
     else:
 
         form1 = ContactForm()
         form2 = IntroForm()
         form3 = AboutForm()
-        context = {'form1': form1, 'form2': form2, 'form3': form3}
-        return render(request, 'accounts/create_profile.html', context)
+        #context = {'form1': form1, 'form2': form2, 'form3': form3}
+    return render(request, 'accounts/create_profile.html', {'form1': form1, 'form2': form2, 'form3': form3})
 
-
+@login_required(login_url='login')
 def view_profile(request):
     info1 = Contact.objects.all()
     info2 = About.objects.all()
