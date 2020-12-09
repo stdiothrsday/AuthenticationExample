@@ -1,6 +1,8 @@
 body{
-    background-color: #fefefe;
+    background-color: black;
     padding-top: 50px;
+    color: black;
+    font-family: 'Sansita Swashed', cursive;
 }
 .asteriskField{
     display: none;
@@ -9,3 +11,13 @@ body{
 form > .alert > ul > li{
     list-style: none;
 }
+
+.navbar{
+    text-align: center;
+}
+
+#make
+{
+   display:none;
+}
+

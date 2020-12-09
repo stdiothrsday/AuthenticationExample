@@ -1,17 +1,19 @@
 {% extends 'accounts/base.html' %}
 
 {% block title %}
-    Index Page
+Home
 {% endblock %}
 
 {% block body %}
 
-    <div class="jumbotron">
+    <div class="jumbotron bg-white">
         <h1 class="display-4 text-capitalize">Hello, {{  user.username}}!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+
         <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+
+        <h3 class="text-danger" id="seek">Do you want to find you perfect match? click here!</h3>
+
+        <a style="display:none;" id="make" class="btn btn-outline-danger btn-lg" href="{% url 'create' %}" role="button">Create Profile</a>
     </div>
 
 {% endblock %}
