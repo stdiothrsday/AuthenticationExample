@@ -1,0 +1,28 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block body %}
+    <div class="card">
+        <div class="card-header">
+            Update Task
+        </div>
+        <div class="card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-10 ">
+                        {{ form.bio_message.label }}{{ form.bio_message}}
+                    </div>
+
+                </div>
+                <br>
+                <a class="btn btn-primary" href="{% url 'update' bio.id%}">update</a>
+                <a class="btn btn-danger" href="{% url 'delete' bio.id%}">delete</a>
+
+            </form>
+
+        </div>
+    </div>
+
+
+{% endblock %}

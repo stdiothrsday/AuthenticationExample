@@ -1,0 +1,22 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    Delete-Confirm
+{% endblock %}
+
+{% block body %}
+    <h1>Confirm</h1>
+
+    <form method="post" action="{% url 'delete' bio.id %}">
+        {% csrf_token %}
+        <h4>Are you sure you want to delete
+            <span class="badge badge-warning">{{ bio.bio_message }}</span>?</h4>
+        <a href="{% url 'view_profile' %}" class="btn btn-info"><i class="fas fa-arrow-left"></i> Go Back</a>
+        <button type="submit" class="btn btn-danger">Yes, I am sure!</button>
+
+
+    </form>
+
+
+
+{% endblock %}

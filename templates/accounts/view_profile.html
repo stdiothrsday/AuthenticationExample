@@ -5,20 +5,30 @@
 {% endblock %}
 
 {% block body %}
-    <div class="jumbotron bg-white">
-        <h2 class="text-center">View Profile</h2>
-        <div>
-            {% for contact in info %}
-            <li>{{ contact }}</li>
-            {% endfor %}
+    <div class="card mb-3" >
+        <img src="https://images.pexels.com/photos/736716/pexels-photo-736716.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">
+                {% for contact in info1 %}
+                <h1>{{ contact }} {{ contact.last_name }}</h1>
+                {% endfor %}</h5>
+            <p class="card-text">
+                 {% for intro in info3 %}
+               <p>My Interests: {{ intro.interests }}</p>
+                     <p>A little about me: {{ intro.bio_message }}</p>
+                     <p>Preference: {{ intro }}</p>
+                {% endfor %}
+        </p>
+            <p class="card-text"><small class="text-muted">
                 {% for about in info2 %}
-            <li>{{ about }}</li>
-            {% endfor %}
-                {% for intro in info3 %}
-            <li>{{ intro }}</li>
-            {% endfor %}
+                    {{ about }}</small></p>
+                <p class="card-text"><small class="text-muted"> Age: {{ about.age }}</small></p>
+                 <p class="card-text"><small class="text-muted">Height(in): {{ about.height}} </small></p>
+                {% endfor %}
 
         </div>
     </div>
+
+
 
 {% endblock %}
