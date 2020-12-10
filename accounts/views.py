@@ -5,6 +5,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import ContactForm, IntroForm, AboutForm
 from .models import Contact, About, Intro
 from .forms import UserRegistrationForm
+
+
 # from django.contrib import messages
 
 
@@ -74,15 +76,16 @@ def create_profile(request):
             form2.save()
             form3.save()
             return redirect('profile')
-            #context = {'form1': form1, 'form2': form2, 'form3': form3}
-            #return render(request, 'accounts/view_profile.html', context)
+            # context = {'form1': form1, 'form2': form2, 'form3': form3}
+            # return render(request, 'accounts/view_profile.html', context)
     else:
 
         form1 = ContactForm()
         form2 = IntroForm()
         form3 = AboutForm()
-        #context = {'form1': form1, 'form2': form2, 'form3': form3}
+        # context = {'form1': form1, 'form2': form2, 'form3': form3}
     return render(request, 'accounts/create_profile.html', {'form1': form1, 'form2': form2, 'form3': form3})
+
 
 @login_required(login_url='login')
 def view_profile(request):
@@ -91,3 +94,26 @@ def view_profile(request):
     info3 = Intro.objects.all()
     context = {'info1': info1, 'info2': info2, 'info3': info3}
     return render(request, 'accounts/view_profile.html', context)
+
+
+def update_profile(request, id):
+    bio = Intro.objects.get(id=id)
+    form = IntroForm(request.POST or None, instance=bio)
+
+    if form.is_valid():
+        form.save()
+
+        return redirect('profile')
+
+    return render(request, 'accounts/update_profile.html', {'form': form, 'bio': bio})
+
+
+def delete_profile(request, id):
+    bio = Intro.objects.get(id=id)
+
+    if request.method == 'POST':
+        bio.delete()
+
+        return redirect('profile')
+
+        return render(request, 'accounts/delete-confirm.html', {'bio': bio})
